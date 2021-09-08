@@ -1,0 +1,22 @@
+adb devices
+
+adb -s emulator-5554 shell
+adb -s v30 shell
+
+run-as xyz.tberghuis.mediaswiperforreddit
+
+cd /data/data/xyz.tberghuis.mediaswiperforreddit/databases/
+
+sqlite3 subreddit.db
+select * from subreddit;
+
+delete from subreddit;
+
+
+.exit
+rm *
+
+.help
+# list tables
+.tables 
+.schema mylist

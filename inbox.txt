@@ -1,0 +1,9 @@
+cull trello
+cull inbox
+reddit share post
+play store release???
+reddit api key???
+
+retrofit flow???
+
+refactor transform urls, sealed class, when
