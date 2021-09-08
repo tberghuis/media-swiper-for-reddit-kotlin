@@ -1,7 +1,8 @@
 README
 LICENSE
 
-cull trello
+github issues
+
 cull inbox
 reddit share post
 play store release???
