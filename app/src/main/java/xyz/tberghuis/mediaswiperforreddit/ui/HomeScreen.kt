@@ -1,5 +1,6 @@
 package xyz.tberghuis.mediaswiperforreddit.ui
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.text.KeyboardActions
@@ -42,10 +43,11 @@ fun HomeScreenContent(navController: NavHostController) {
   val subreddits: List<String> by homeViewModel.getSubreddits().collectAsState(listOf())
   Column {
     subreddits.forEach { subreddit ->
+      // todo row with trash icon
+      // can't figure out onLongPress
       Button(onClick = {
         navController.navigate("subredditPager/$subreddit")
-      }
-      ) {
+      }) {
         Text(subreddit)
       }
     }
