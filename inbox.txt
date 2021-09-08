@@ -1,3 +1,6 @@
+(git add .) -and (git commit -m.) -and (git push)
+
+
 README
 LICENSE
 
