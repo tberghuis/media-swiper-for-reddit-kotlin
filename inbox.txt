@@ -1,3 +1,6 @@
+README
+LICENSE
+
 cull trello
 cull inbox
 reddit share post
