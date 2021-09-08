@@ -1,4 +1,6 @@
-(git add .) -and (git commit -m.) -and (git push)
+git add .
+git commit -m.
+git push
 
 
 README
