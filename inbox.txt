@@ -10,3 +10,8 @@ reddit api key???
 retrofit flow???
 
 refactor transform urls, sealed class, when
+
+reference
+https://github.com/jeffjose/redditpx
+https://github.com/henrybalassiano/Tik-Tok-Clone/
+https://github.com/nihk/exo-viewpager-fun
