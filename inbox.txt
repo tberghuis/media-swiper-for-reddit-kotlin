@@ -1,6 +1,8 @@
 README
 LICENSE
 
+build signed APK, github release
+
 github issues
 
 cull inbox
