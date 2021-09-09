@@ -21,10 +21,18 @@ class HomeViewModel @Inject constructor(
   fun getSubreddits(): Flow<List<String>> {
     return subredditDao.getAll().map { list -> list.map { it.subreddit } }
   }
+
   fun addSubreddit(subreddit: String) {
     // why didn't i need Dispatchers.IO in My Lists???
     viewModelScope.launch(Dispatchers.IO) {
       subredditDao.insertAll(Subreddit(subreddit))
     }
   }
+
+  fun deleteSubreddit(subreddit: String) {
+    viewModelScope.launch(Dispatchers.IO) {
+      subredditDao.delete(Subreddit(subreddit))
+    }
+  }
+
 }

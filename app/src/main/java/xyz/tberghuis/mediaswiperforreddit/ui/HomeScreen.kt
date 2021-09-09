@@ -2,10 +2,13 @@ package xyz.tberghuis.mediaswiperforreddit.ui
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
@@ -38,6 +41,13 @@ fun HomeScreen(navController: NavHostController) {
 @Composable
 fun HomeScreenContent(navController: NavHostController) {
   val homeViewModel: HomeViewModel = hiltViewModel()
+
+  var deleteDialog: String? by rememberSaveable { mutableStateOf(null) }
+
+  deleteDialog?.let {
+    DeleteSubredditDialog({ deleteDialog = null }, deleteDialog!!)
+  }
+
   // no need for remember???
   // what about lifecycleowner??? that androiddevelopers medium post flow compose
   val subreddits: List<String> by homeViewModel.getSubreddits().collectAsState(listOf())
@@ -45,11 +55,21 @@ fun HomeScreenContent(navController: NavHostController) {
     subreddits.forEach { subreddit ->
       // todo row with trash icon
       // can't figure out onLongPress
-      Button(onClick = {
-        navController.navigate("subredditPager/$subreddit")
-      }) {
-        Text(subreddit)
+
+      Row {
+        Button(
+          modifier = Modifier.weight(1f),
+          onClick = {
+            navController.navigate("subredditPager/$subreddit")
+          }) {
+          Text(subreddit)
+        }
+        IconButton(onClick = { deleteDialog = subreddit }) {
+          Icon(Icons.Filled.Delete, contentDescription = "delete")
+        }
       }
+
+
     }
   }
 }
@@ -77,3 +97,30 @@ fun AddSubredditDialog(closeDialog: () -> Unit) {
     },
     buttons = {})
 }
+
+@Composable
+fun DeleteSubredditDialog(closeDialog: () -> Unit, subreddit: String) {
+  val homeViewModel: HomeViewModel = hiltViewModel()
+  AlertDialog(onDismissRequest = closeDialog,
+//    title = { Text("Add Subreddit") },
+    text = {
+      Text("Delete \"$subreddit\"")
+    },
+    confirmButton = {
+      Button(
+        onClick = {
+          homeViewModel.deleteSubreddit(subreddit)
+          closeDialog()
+        }) {
+        Text("OK")
+      }
+    },
+    dismissButton = {
+      Button(
+        onClick = closeDialog
+      ) {
+        Text("Cancel")
+      }
+    })
+}
+
