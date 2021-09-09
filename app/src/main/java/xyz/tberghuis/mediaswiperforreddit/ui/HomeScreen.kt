@@ -1,9 +1,8 @@
 package xyz.tberghuis.mediaswiperforreddit.ui
 
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
+import android.util.Log
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
@@ -13,10 +12,14 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import androidx.compose.foundation.lazy.items
+import androidx.compose.ui.unit.dp
 
 @Composable
 fun HomeScreen(navController: NavHostController) {
@@ -51,11 +54,9 @@ fun HomeScreenContent(navController: NavHostController) {
   // no need for remember???
   // what about lifecycleowner??? that androiddevelopers medium post flow compose
   val subreddits: List<String> by homeViewModel.getSubreddits().collectAsState(listOf())
-  Column {
-    subreddits.forEach { subreddit ->
-      // todo row with trash icon
-      // can't figure out onLongPress
 
+  LazyColumn(contentPadding = PaddingValues(10.dp)) {
+    items(items = subreddits, itemContent = { subreddit ->
       Row {
         Button(
           modifier = Modifier.weight(1f),
@@ -68,9 +69,7 @@ fun HomeScreenContent(navController: NavHostController) {
           Icon(Icons.Filled.Delete, contentDescription = "delete")
         }
       }
-
-
-    }
+    })
   }
 }
 
