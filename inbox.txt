@@ -18,3 +18,5 @@ reference
 https://github.com/jeffjose/redditpx
 https://github.com/henrybalassiano/Tik-Tok-Clone/
 https://github.com/nihk/exo-viewpager-fun
+
+reference and retire old flutter project
