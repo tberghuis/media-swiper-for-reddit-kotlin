@@ -1,3 +1,13 @@
+use https://gonewildbrowser.com/ api
+https://www.reddit.com/r/SideProject/duplicates/r1x07i/nsfw_just_a_minimal_reddit_frontend_specifically/
+
+make the client, then share....
+
+make a web version with react....
+node proxy to hit api
+
+-------------------------------------------------
+
 README
 LICENSE
 
