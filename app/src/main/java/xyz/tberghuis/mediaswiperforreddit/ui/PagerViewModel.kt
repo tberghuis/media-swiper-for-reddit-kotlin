@@ -27,7 +27,8 @@ fun extractImgurUrls(urls: List<String>): List<String> {
 // https://thumbs2.redgifs.com/XxxxXxxx-mobile.jpg
 
 fun extractRedgifsUrls(redditApiResponse: RedditApiResponse): List<String> {
-  val allThumbnailUrls = redditApiResponse.data.children.mapNotNull { it.data.media?.oembed?.thumbnail_url }
+  val allThumbnailUrls =
+    redditApiResponse.data.children.mapNotNull { it.data.media?.oembed?.thumbnail_url }
   val redgifUrls = allThumbnailUrls.mapNotNull {
     val regex = Regex("""https://thumbs2\.redgifs\.com/(.*)\.jpg""")
     regex.matchEntire(it)?.groups?.get(1)?.value
@@ -40,6 +41,7 @@ fun extractRedgifsUrls(redditApiResponse: RedditApiResponse): List<String> {
 class PagerViewModel : ViewModel() {
 
   val urls = mutableStateListOf<String>()
+
   // todo clear on back pressed
   private var nextAfter = ""
   private var isFetching = false
@@ -52,7 +54,7 @@ class PagerViewModel : ViewModel() {
     // todo properly
     val redditApiResponse =
       RedditApi.retrofitService.fetchRedditApi(subreddit = subreddit, after = nextAfter)
-    nextAfter = redditApiResponse.data.after
+    nextAfter = redditApiResponse.data.after ?: ""
     val unfilteredUrls = redditApiResponse.data.children.map { it.data.url }
     Log.d("xxx", unfilteredUrls.toString())
 
@@ -81,6 +83,9 @@ class PagerViewModel : ViewModel() {
   fun getPlayer(page: Int): Player {
     val mod = page % 3
     return players[mod]!!.apply {
+
+      Log.d("xxx", "getplayer $page ${urls[page]}")
+
       val mediaItem = MediaItem.Builder()
         .setUri(urls[page])
         .setMimeType(MimeTypes.VIDEO_MP4)
