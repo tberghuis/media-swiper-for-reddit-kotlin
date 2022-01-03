@@ -1,5 +1,8 @@
 
 make image media work
+
+hardcode some default sfw subreddits
+
 ....
 f-droid release
 reddit api keys
