@@ -3,6 +3,9 @@ make image media work
 
 hardcode some default sfw subreddits
 
+
+move navController to localcomposition
+
 ....
 f-droid release
 reddit api keys

@@ -11,11 +11,7 @@ import androidx.compose.material.icons.filled.Delete
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.compose.foundation.lazy.items
@@ -56,6 +52,11 @@ fun HomeScreenContent(navController: NavHostController) {
   val subreddits: List<String> by homeViewModel.getSubreddits().collectAsState(listOf())
 
   LazyColumn(contentPadding = PaddingValues(10.dp)) {
+
+    item() {
+      Text("hello world")
+    }
+
     items(items = subreddits, itemContent = { subreddit ->
       Row {
         Button(
