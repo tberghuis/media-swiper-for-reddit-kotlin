@@ -1,3 +1,18 @@
+
+make image media work
+....
+f-droid release
+reddit api keys
+play store paid app 5$
+
+read all stackoverflow exoplayer
+
+player control like gif4chanswiper
+
+debug logs: activity, compose, VM lifecycle
+
+#############################
+
 use https://gonewildbrowser.com/ api
 https://www.reddit.com/r/SideProject/duplicates/r1x07i/nsfw_just_a_minimal_reddit_frontend_specifically/
 
