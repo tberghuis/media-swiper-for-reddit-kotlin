@@ -28,6 +28,8 @@ fun SubredditPager(subreddit: String) {
   LaunchedEffect(Unit) {
     pagerViewModel.initializePlayers(context)
   }
+
+  // this should be called by vm init block
   LaunchedEffect(Unit) {
     pagerViewModel.fetchMore(subreddit)
   }
