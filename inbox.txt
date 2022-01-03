@@ -9,6 +9,10 @@ read all stackoverflow exoplayer
 
 player control like gif4chanswiper
 
+update lib versions
+
+exoplayer textureview
+
 debug logs: activity, compose, VM lifecycle
 
 #############################
