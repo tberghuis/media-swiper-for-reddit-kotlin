@@ -53,10 +53,6 @@ fun HomeScreenContent(navController: NavHostController) {
 
   LazyColumn(contentPadding = PaddingValues(10.dp)) {
 
-    item() {
-      Text("hello world")
-    }
-
     items(items = subreddits, itemContent = { subreddit ->
       Row {
         Button(

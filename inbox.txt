@@ -2,6 +2,7 @@
 make image media work
 
 hardcode some default sfw subreddits
+do this with DB migration, for newly installed apps
 
 
 move navController to localcomposition
